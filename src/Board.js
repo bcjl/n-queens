@@ -99,6 +99,7 @@
       //iterate through every row; run hasRowConflictAt on each row
         //if any row returns true; return true;
       var rowsArray = this.rows();
+      rowsArray.length = rowsArray.length || 0;
       for(var i = 0; i < rowsArray.length; i++){
         if(this.hasRowConflictAt(i)){
           return true;
@@ -117,8 +118,11 @@
       //iterate through each element of the rowsArray
       //push the element at row [colIndex] into a new array
       //sum that array, if > 1, return true
+
+
       var colArr = [];
       var rowsArray = this.rows();
+
       var count = 0;
       for(var i = 0; i < rowsArray.length;i++){
         colArr.push(rowsArray[i][colIndex]);
@@ -133,7 +137,9 @@
     hasAnyColConflicts: function() {
       //iterate through each col in the board
       //test each col using hasColConflictAt, if any return true, short circuit true
+
       var rowsArray = this.rows();
+
       for(var i = 0; i < rowsArray[0].length; i++){
         if(this.hasColConflictAt(i)){
           return true;
